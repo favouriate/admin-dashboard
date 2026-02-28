@@ -167,10 +167,8 @@ const SingleUserPage = () => {
               <h1 className="text-xl font-semibold">Mary Smith</h1>
             </div>
             <p className="text-sm text-muted-foreground">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel
-              voluptas distinctio ab ipsa commodi fugiat labore quos veritatis
-              cum corrupti sed repudiandae ipsum, harum recusandae ratione ipsam
-              in, quis quia.
+              Mary is a highly engaged admin who regularly reviews user activity,
+              manages permissions, and keeps the workspace organized for the team.
             </p>
           </div>
           {/* CHART CONTAINER */}
