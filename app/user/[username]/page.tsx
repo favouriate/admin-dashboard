@@ -21,8 +21,17 @@ import { Button } from "@/components/ui/button";
 import EditUser from "@/features/dashboard/components/EditUser";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import AppLineChart from "@/features/dashboard/components/AppLineChart";
+import { DashboardCard } from "@/components/ui/dashboard-card";
+import { SectionTitle } from "@/components/ui/section-title";
 
-const SingleUserPage = () => {
+type PageProps = {
+  params: Promise<{ username: string }>;
+};
+
+const SingleUserPage = async ({ params }: PageProps) => {
+  const { username } = await params;
+  const displayName = username.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+
   return (
     <div className="">
       <Breadcrumb>
@@ -32,21 +41,18 @@ const SingleUserPage = () => {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/users">Users</BreadcrumbLink>
+            <BreadcrumbLink href="/user">Users</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>Mary Smith</BreadcrumbPage>
+            <BreadcrumbPage>{displayName}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      {/* CONTAINER */}
       <div className="mt-4 flex flex-col xl:flex-row gap-8">
-        {/* LEFT */}
         <div className="w-full xl:w-1/3 space-y-6">
-          {/* USER BADGES CONTAINER */}
-          <div className="bg-primary-foreground p-4 rounded-lg">
-            <h1 className="text-xl font-semibold">User Badges</h1>
+          <DashboardCard>
+            <SectionTitle>User Badges</SectionTitle>
             <div className="flex gap-4 mt-4">
               <HoverCard>
                 <HoverCardTrigger>
@@ -106,11 +112,10 @@ const SingleUserPage = () => {
                 </HoverCardContent>
               </HoverCard>
             </div>
-          </div>
-          {/* INFORMATION CONTAINER */}
-          <div className="bg-primary-foreground p-4 rounded-lg">
-            <div className="flex items-center justify-between">
-              <h1 className="text-xl font-semibold">User Information</h1>
+          </DashboardCard>
+          <DashboardCard>
+            <div className="flex items-center justify-between gap-4">
+              <SectionTitle className="mb-0">User Information</SectionTitle>
               <Sheet>
                 <SheetTrigger asChild>
                   <Button>Edit User</Button>
@@ -149,33 +154,29 @@ const SingleUserPage = () => {
             <p className="text-sm text-muted-foreground mt-4">
               Joined on 2025.01.01
             </p>
-          </div>
-          {/* CARD LIST CONTAINER */}
-          <div className="bg-primary-foreground p-4 rounded-lg">
+          </DashboardCard>
+          <DashboardCard>
             <CardList title="Recent Transactions" items={MOCK_LATEST_TRANSACTIONS} />
-          </div>
+          </DashboardCard>
         </div>
-        {/* RIGHT */}
         <div className="w-full xl:w-2/3 space-y-6">
-          {/* USER CARD CONTAINER */}
-          <div className="bg-primary-foreground p-4 rounded-lg space-y-2">
+          <DashboardCard>
             <div className="flex items-center gap-2">
               <Avatar className="size-12">
                 <AvatarImage src="https://randomuser.me/api/portraits/women/44.jpg" />
                 <AvatarFallback>MD</AvatarFallback>
               </Avatar>
-              <h1 className="text-xl font-semibold">Mary Smith</h1>
+              <h1 className="text-xl font-semibold">{displayName}</h1>
             </div>
             <p className="text-sm text-muted-foreground">
               Mary is a highly engaged admin who regularly reviews user activity,
               manages permissions, and keeps the workspace organized for the team.
             </p>
-          </div>
-          {/* CHART CONTAINER */}
-          <div className="bg-primary-foreground p-4 rounded-lg">
-            <h1 className="text-xl font-semibold">User Activity</h1>
+          </DashboardCard>
+          <DashboardCard>
+            <SectionTitle>User Activity</SectionTitle>
             <AppLineChart />
-          </div>
+          </DashboardCard>
         </div>
       </div>
     </div>
