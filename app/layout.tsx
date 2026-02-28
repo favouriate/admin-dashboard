@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Uwana Dashboard",
+  title: "Admin Dashboard",
   description: "Admin dashboard for managing users, payments, and analytics.",
 };
 

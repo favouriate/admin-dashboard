@@ -13,7 +13,7 @@ const AppSidebar = () => {
             <SidebarMenuButton asChild>
               <Link href="/">
                 <Image src="/logo.png" alt="logo" width={20} height={20} />
-                <span>Uwana Dashboard</span>
+                <span>Admin Dashboard</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

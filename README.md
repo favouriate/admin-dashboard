@@ -1,4 +1,4 @@
-# Uwana Dashboard
+# Admin Dashboard
 
 A modern admin dashboard built with Next.js, TypeScript, and Tailwind CSS. Manage users, payments, and analytics from a single, responsive interface.
 
