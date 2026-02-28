@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Uwana Dashboard
+
+A modern admin dashboard built with Next.js, TypeScript, and Tailwind CSS. Manage users, payments, and analytics from a single, responsive interface.
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4
+- **UI:** shadcn/ui (Radix primitives), Lucide icons
+- **Charts:** Recharts
+- **Tables:** TanStack Table
+- **Forms:** React Hook Form, Zod, @hookform/resolvers
+- **Theme:** next-themes (light / dark / system)
+
+## Features
+
+- **Dashboard** — Overview with bar, area, and pie charts; todo list; latest transactions and popular content cards
+- **Payments** — Data table with sorting, pagination, row selection, and status badges (NGN)
+- **Users** — User list (placeholder) and per-user profile with badges, info, activity chart, and edit form
+- **Layout** — Collapsible sidebar (state persisted via cookie), navbar with theme toggle and user menu
+- **Resilience** — Root error boundary (`error.tsx`), 404 page (`not-found.tsx`), and loading skeleton
+
+## Project Structure
+
+```
+app/                    # Next.js App Router
+  page.tsx              # Dashboard home
+  user/                 # Users list & [username] profile
+  payments/             # Payments table
+  layout.tsx            # Root layout (sidebar, theme, providers)
+  error.tsx             # Error boundary
+  not-found.tsx         # 404 page
+  loading.tsx           # Loading UI
+components/             # Shared UI
+  ui/                   # shadcn primitives + dashboard-card, section-title, status-badge
+  sidebar/              # Sidebar nav, footer, config
+  data-table.tsx        # Generic TanStack Table wrapper
+  TablePagination.tsx
+features/
+  dashboard/            # Dashboard widgets (charts, TodoList, CardList, EditUser, AppLineChart)
+  payments/             # Payments columns, mock data
+lib/                    # Utils (cn), dashboard layout constants
+types/                  # dashboard.ts, payments.ts
+hooks/                  # use-mobile (sidebar)
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm or pnpm
+
+### Install
+
+```bash
+npm install
+```
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+### Lint
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run lint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Environment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+No environment variables are required for the current mock-data setup. For a real backend, add a `.env.local` with your API base URL and any keys.
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Private. All rights reserved.
